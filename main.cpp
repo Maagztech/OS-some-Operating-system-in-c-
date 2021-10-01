@@ -1,8 +1,10 @@
+#include <iostream>
 #include<stdio.h>
 #include<time.h>
 #include<stdlib.h>
 #include <windows.h>
 
+using namespace std;
 void gotoxy(int x, int y)
 {
   COORD coord;
@@ -11,22 +13,31 @@ void gotoxy(int x, int y)
   SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-void main()
-
+int main()
 {
-   
 
+
+
+
+
+  
 time_t actual = time(NULL);
 time_t duration = 2;
 time_t endwait = actual + duration ;
-printf("WELCOME TO OS ~ SOME\n\n");
-printf("PROJECT BY:\n");
-printf("1.Shivam Sharma(captan)\n");
-printf("2.Asher Ali\n");
-printf("");
-printf("");
-printf("");
-printf("DSG (mentor)\n");
+cout << "_*_*_*_*_*_*_*_*_*__*_*_*_*_*WELCOME TO OS-SOME_*_*_*_*_*__*_*_*_*_*_*_\n" << "1 to enter 0 to exit ";
+cout<<"PROJECT BY:\n";
+cout<<"1.Shivam Sharma(captan)\n";
+cout<<"2.Asher Ali\n";
+cout<<"";
+
+
+
+
+
+
+
+
+cout<<"DSG (mentor)\n";
 while(actual < endwait)
 {
 actual = time(NULL);
@@ -39,9 +50,10 @@ system("cls");
 
 	
 	gotoxy(5, 5);
-printf("now this the main page whwre people will find list of programms");
+cout("now this the main page where people will find list of programms");
 
 
 
 scanf("%d",&i);
+return 0;
 }
