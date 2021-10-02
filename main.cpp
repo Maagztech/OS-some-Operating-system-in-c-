@@ -23,7 +23,7 @@ int switcf(int switchcheck)
   {
   case 1:
   {
-    gotoxy(40, 30);
+
     cout << "ENTER USER ID:\n";
     cin >> id;
     cout << "PASSWORD:\n";
@@ -43,14 +43,41 @@ int switcf(int switchcheck)
         return accno;
       }
     }
+    break;
   }
 
   case 2:
   {
+    cout << "\tSIGN-UP FOR OS~SOME\n"
+         << "-----------------------------------------\n\n\n\n";
+    cout << "ENTER YOUR NAME:\n";
+    char name[100] = "DRUNKEN";
+    cin >> name;
+    cout << "CHOOSE USER ID(max 10 letters + numbers allowed):\n";
+    cin >> id;
+    cout << "PASSWORD: (max 10 letters + numbers allowed)\n";
+    cin >> pass;
+    char plus[2] = "+";
+    strcat(id, plus);
+    strcat(id, pass);
+    FILE *login = fopen("start.txt", "r");
+    int accno = 0;
+    while (!EOF)
+    {
+      fgets(idcheck, 25, login);
+      ++accno;
+      if (idcheck == id)
+      {
+        fclose(login);
+        return accno;
+      }
+    }
+    break;
   }
 
   case 3:
   {
+    break;
   } //switch end for shutdown
 
   } //end of switch
@@ -63,7 +90,7 @@ void loginf(int accno)
     system("cls");
     FILE *namefind = fopen("name.txt", "r");
     int count = 0;
-    char name[100];                            /* or other suitable maximum line size */
+    char name[100] = "asutosh prad";           /* or other suitable maximum line size */
     while (fgets(name, 100, namefind) != NULL) /* read a line */
     {
 
@@ -80,7 +107,6 @@ void loginf(int accno)
     }
 
     cout << "HELLO!! " << name << " WELCOME AGAIN.";
-
     time_t actual = time(NULL);
     time_t duration = 5;
     time_t endwait = actual + duration;
@@ -98,13 +124,15 @@ void loginf(int accno)
          << "-----------------------\n\n"
          << "1.OTHER APPLICATIONS\n"
          << "2.WORD (*recommended to try)\n"
-         << "3.NOTEPAD\n"
+         << "3.WATCH"
          << "4.GAMES\n"
          << "5.VIDEO PLAYER\n"
          << "6.YOUTUBE\n"
-         << "7.MY FILES";
+         << "7.MY FILES"
+         << "8.NOTEPAD\n";
   }
 }
+
 // the main function starts from here
 int main()
 {
@@ -118,8 +146,8 @@ int main()
   cout << "1.Shivam Sharma(captan)\n";
   cout << "2.Asher Ali\n";
   cout << "3.Asutosh Pradhan\n";
-  cout << "";
-  cout << "";
+  cout << "4.";
+  cout << "5.";
   cout << "DSG (mentor)\n";
   cout << "\n\n\n\n\nLoading have patient and read the credits.";
 
@@ -141,10 +169,6 @@ int main()
   cin >> start;
   int accno = switcf(start);
   loginf(accno);
-
-
-
-
 
   // int choice1;
   // cout << "enter your choice :-";
