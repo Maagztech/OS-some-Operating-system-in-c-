@@ -16,16 +16,102 @@ void gotoxy(int x, int y)
   coord.Y = y;
   SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
+void switcf(int switchcheck)
+{
+  char id[25], pass[10], idcheck[25];
+  switch (switchcheck)
+  {
+  case 1:
+  {
+    gotoxy(40, 30);
+    cout << "ENTER USER ID:\n";
+    cin >> id;
+    cout << "PASSWORD:\n";
+    cin >> pass;
+    char plus[2] = "+";
+    strcat(id, plus);
+    strcat(id, pass);
+    FILE *login = fopen("start.txt", "r");
+    int accno = 0;
+    while (!EOF)
+    {
+      fgets(idcheck, 25, login);
+      ++accno;
+      if (idcheck == id)
+      {
+        fclose(login);
+        loginf(accno);
+      }
+    }
+  }
 
+  case 2:
+  {
+  }
+
+  case 3:
+  {
+  } //switch end for shutdown
+
+  } //end of switch
+} //end of switchf function
+
+void loginf(int accno)
+{
+  {
+
+    system("cls");
+    FILE *namefind = fopen("name.txt", "r");
+    int count;
+    char name[100];                                /* or other suitable maximum line size */
+    while (fgets(name,100, namefind) != NULL) /* read a line */
+    {
+      
+      if (count == accno)
+      {
+
+        fclose(namefind);
+        break;
+
+      }
+      else
+      {
+        count++;
+      }
+    }
+    
+    cout << "HELLO!! " << name << " WELCOME AGAIN.";
+
+    time_t actual = time(NULL);
+    time_t duration = 5;
+    time_t endwait = actual + duration;
+    while (actual < endwait)
+    {
+      actual = time(NULL);
+    }
+
+    //now this the main page where people will find list of programms
+    system("cls");
+
+    cout << ".................successfuly entered\n"
+         << "Showing Menu:\n"
+         << "select your choice\n"
+         << "-----------------------\n\n"
+         << "1.OTHER APPLICATIONS\n"
+         << "2.WORD (*recommended to try)\n"
+         << "3.NOTEPAD\n"
+         << "4.GAMES\n"
+         << "5.VIDEO PLAYER\n"
+         << "6.YOUTUBE\n"
+         << "7.MY FILES";
+  }
+}
 // the main function starts from here
 int main()
 {
 
   // starting step of welcome and showing of menu page
 
-  time_t actual = time(NULL);
-  time_t duration = 5;
-  time_t endwait = actual + duration;
   gotoxy(10, 10);
   cout << "_*_*_*_*_*_*_*_*_*__*_*_*_*_*WELCOME TO OS-SOME_*_*_*_*_*__*_*_*_*_*_*_\n";
   cout << "\n\nPROJECT BY:\n";
@@ -46,46 +132,6 @@ int main()
   cout << "2.sign-up\n";
   cout << "3.shutdown\n";
   cin >> start;
-  char id[25], pass[10], idcheck[25];
-  switch (start)
-  {
-  case 1:
-  {
-    gotoxy(40, 30);
-    cout << "ENTER USER ID:\n";
-    cin >> id;
-    cout << "PASSWORD:\n";
-    cin >> pass;
-    char plus[2] = "+";
-    strcat(id, plus);
-    strcat(id, pass);
-    FILE *login = fopen("start.txt", "r");
-    while (!EOF)
-    {
-      fgets(idcheck, 25, login);
-      if (idcheck == id)
-      {
-        while (actual < endwait)
-        {
-          actual = time(NULL);
-        }
-
-        //now this the main page where people will find list of programms
-        system("cls");
-
-        cout << ".................successfuly entered\n"
-             << "Showing Menu:\n"
-             << "select your choice\n"
-             << "1.Open Applications of other groups\n"
-             << "2.WORD (*recommended to try)\n"
-             << "3.NOTEPAD\n"
-             << "4.GAMES\n"
-             << "5.VIDEO PLAYER\n"
-             << "6.YOUTUBE\n";
-      }
-    }
-  }
-  }
 
   // int choice1;
   // cout << "enter your choice :-";
