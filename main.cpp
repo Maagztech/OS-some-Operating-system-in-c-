@@ -3,6 +3,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <string.h>
 
 using namespace std;
 
@@ -35,49 +36,56 @@ int main()
   cout << "";
   cout << "";
   cout << "DSG (mentor)\n";
-  cout<<"\n\n\n\n\nLoading have patient and read the credits.";
+  cout << "\n\n\n\n\nLoading have patient and read the credits.";
 
-char id[12],pass[10];
-system("cls");
-cout<<"::CHOOSE::\n";
-cout<<"-------------\n";
-cout<<"1.login\n";
-cout<<"2.sign-up\n";
-cout<<"3.shutdown\n";
-gotoxy(40,30);
-cout<<"ENTER USER ID:\n";
-cin>>id;
-cout<<"PASSWORD:\n";
-cin>>pass;
-
-  while (actual < endwait)
-  {
-    actual = time(NULL);
-  }
-
-  //now this the main page where people will find list of programms
+  int start;
   system("cls");
+  cout << "::CHOOSE::\n";
+  cout << "-------------\n";
+  cout << "1.login\n";
+  cout << "2.sign-up\n";
+  cout << "3.shutdown\n";
+  cin >> start;
+  char id[25], pass[10], idcheck[25];
+  switch (start)
+  {
+  case 1:
+  {
+    gotoxy(40, 30);
+    cout << "ENTER USER ID:\n";
+    cin >> id;
+    cout << "PASSWORD:\n";
+    cin >> pass;
+    char plus[2] = "+";
+    strcat(id, plus);
+    strcat(id, pass);
+    FILE *login = fopen("start.txt", "r");
+    while (!EOF)
+    {
+      fgets(idcheck, 25, login);
+      if (idcheck == id)
+      {
+        while (actual < endwait)
+        {
+          actual = time(NULL);
+        }
 
-  cout << ".................successfuly entered\n"
-       << "Showing Menu:\n"
-       << "select your choice\n"
-       << "1.Open Applications of other groups\n"
-       << "2.WORD (*recommended to try)\n"
-       << "3.NOTEPAD\n"
-       << "4.GAMES"
-       <<"5.VIDEO PLAYER"
-       <<"YOUTUBE";
+        //now this the main page where people will find list of programms
+        system("cls");
 
-
-
-
-
-
-
-
-
-
-
+        cout << ".................successfuly entered\n"
+             << "Showing Menu:\n"
+             << "select your choice\n"
+             << "1.Open Applications of other groups\n"
+             << "2.WORD (*recommended to try)\n"
+             << "3.NOTEPAD\n"
+             << "4.GAMES\n"
+             << "5.VIDEO PLAYER\n"
+             << "6.YOUTUBE\n";
+      }
+    }
+  }
+  }
 
   // int choice1;
   // cout << "enter your choice :-";
@@ -122,7 +130,7 @@ cin>>pass;
   // WaitForSingleObject(pi.hProcess, INFINITE);
   // CloseHandle(pi.hThread);
   // CloseHandle(pi.hProcess);
-int y;
-cin>>y;
+  int y;
+  cin >> y;
   return (0);
 }
