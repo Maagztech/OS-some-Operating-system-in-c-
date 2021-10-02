@@ -9,14 +9,14 @@ using namespace std;
 
 // here declare all the important function so that can be reusble.
 
-void gotoxy(int x, int y)
+int gotoxy(int x, int y)
 {
   COORD coord;
   coord.X = x;
   coord.Y = y;
   SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
-void switcf(int switchcheck)
+int switcf(int switchcheck)
 {
   char id[25], pass[10], idcheck[25];
   switch (switchcheck)
@@ -40,7 +40,7 @@ void switcf(int switchcheck)
       if (idcheck == id)
       {
         fclose(login);
-        loginf(accno);
+        return accno;
       }
     }
   }
@@ -62,24 +62,23 @@ void loginf(int accno)
 
     system("cls");
     FILE *namefind = fopen("name.txt", "r");
-    int count;
-    char name[100];                                /* or other suitable maximum line size */
-    while (fgets(name,100, namefind) != NULL) /* read a line */
+    int count = 0;
+    char name[100];                            /* or other suitable maximum line size */
+    while (fgets(name, 100, namefind) != NULL) /* read a line */
     {
-      
+
       if (count == accno)
       {
 
         fclose(namefind);
         break;
-
       }
       else
       {
         count++;
       }
     }
-    
+
     cout << "HELLO!! " << name << " WELCOME AGAIN.";
 
     time_t actual = time(NULL);
@@ -93,7 +92,7 @@ void loginf(int accno)
     //now this the main page where people will find list of programms
     system("cls");
 
-    cout << ".................successfuly entered\n"
+    cout << ".................Successfuly Entered.....................\n"
          << "Showing Menu:\n"
          << "select your choice\n"
          << "-----------------------\n\n"
@@ -124,6 +123,14 @@ int main()
   cout << "DSG (mentor)\n";
   cout << "\n\n\n\n\nLoading have patient and read the credits.";
 
+  time_t actual = time(NULL);
+  time_t duration = 5;
+  time_t endwait = actual + duration;
+  while (actual < endwait)
+  {
+    actual = time(NULL);
+  }
+
   int start;
   system("cls");
   cout << "::CHOOSE::\n";
@@ -132,6 +139,12 @@ int main()
   cout << "2.sign-up\n";
   cout << "3.shutdown\n";
   cin >> start;
+  int accno = switcf(start);
+  loginf(accno);
+
+
+
+
 
   // int choice1;
   // cout << "enter your choice :-";
@@ -176,6 +189,7 @@ int main()
   // WaitForSingleObject(pi.hProcess, INFINITE);
   // CloseHandle(pi.hThread);
   // CloseHandle(pi.hProcess);
+
   int y;
   cin >> y;
   return (0);
