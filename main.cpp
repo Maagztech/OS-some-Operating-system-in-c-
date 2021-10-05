@@ -1,4 +1,5 @@
 #include <iostream>
+#include<fstream>
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
@@ -23,7 +24,6 @@ int switcf(int switchcheck)
   {
   case 1:
   {
-
     cout << "ENTER USER ID:\n";
     cin >> id;
     cout << "PASSWORD:\n";
@@ -37,6 +37,7 @@ int switcf(int switchcheck)
     {
       fgets(idcheck, 25, login);
       ++accno;
+      cout<<idcheck<<"\n";
       if (idcheck == id)
       {
         fclose(login);
@@ -51,7 +52,7 @@ int switcf(int switchcheck)
     cout << "\tSIGN-UP FOR OS~SOME\n"
          << "-----------------------------------------\n\n\n\n";
     cout << "ENTER YOUR NAME:\n";
-    char name[100] = "DRUNKEN";
+    char name[100];
     cin >> name;
     cout << "CHOOSE USER ID(max 10 letters + numbers allowed):\n";
     cin >> id;
@@ -60,24 +61,24 @@ int switcf(int switchcheck)
     char plus[2] = "+";
     strcat(id, plus);
     strcat(id, pass);
-    FILE *login = fopen("start.txt", "r");
-    int accno = 0;
-    while (!EOF)
-    {
-      fgets(idcheck, 25, login);
-      ++accno;
-      if (idcheck == id)
-      {
-        fclose(login);
-        return accno;
-      }
-    }
+    fstream signup;
+    signup.open("start.txt",ios::out | ios::app);
+    signup<<id<<"\n";
+    signup.close();
+    fstream name1;
+    name1.open("name.txt",ios::out | ios::app);
+    name1<<name<<"\n";
+    name1.close();
+    system("cls");
+    cout<<"Hii "<<name<<" thanks !! you are successfully registered .Now do your work.";
     break;
   }
 
   case 3:
   {
-    break;
+    cout<<"Shutting down";
+    Sleep(3000);
+    exit(0);
   } //switch end for shutdown
 
   } //end of switch
@@ -170,49 +171,54 @@ int main()
   int accno = switcf(start);
   loginf(accno);
 
-  // int choice1;
-  // cout << "enter your choice :-";
-  // cin >> choice1;
-  // if (choice1 == 1)
-  // {
-  //   //just eneterd the appliaction part
 
-  //   cout << "1. Batch's Projects"
-  //        << "\t"
-  //        << "2. Windows Media Player"
-  //        << "\t"
-  //        << "3.Notepad\n";
 
-  //   int cia;
-  //   cin >> cia; //choice in apps
-  // }
 
-  // // only tried to open
-  // HANDLE hprocess = NULL;
-  // char status = 'y';
-  // HANDLE hthread = NULL;
-  // STARTUPINFO si;
-  // PROCESS_INFORMATION pi;
-  // DWORD dwprocessId = 0;
-  // DWORD dwthreadId = 0;
-  // ZeroMemory(&si, sizeof(si));
-  // ZeroMemory(&pi, sizeof(pi));
-  // BOOL bCreateProcess = NULL;
+// create process start from herethis is to be run after a user logedin to the system
 
-  // bCreateProcess = CreateProcess(L"C:\\Windows\\notepad.exe", NULL, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi);
-  // if (bCreateProcess == FALSE)
-  // {
-  //   cout << "couldnotrocess\n"
-  //        << GetLastError() << endl;
-  // }
-  // cout << "program launched succesfully\n"
-  //      << endl;
-  // cout << "processid" << pi.dwProcessId << endl;
-  // cout << "threadid" << pi.dwThreadId << endl;
+ /* int choice1;
+  cout << "enter your choice :-";
+  cin >> choice1;
+  if (choice1 == 1)
+  {
+    //just eneterd the appliaction part
 
-  // WaitForSingleObject(pi.hProcess, INFINITE);
-  // CloseHandle(pi.hThread);
-  // CloseHandle(pi.hProcess);
+    cout << "1. Batch's Projects"
+         << "\t"
+         << "2. Windows Media Player"
+         << "\t"
+         << "3.Notepad\n";
+
+    int cia;
+    cin >> cia; //choice in apps
+  }
+
+  // only tried to open
+  HANDLE hprocess = NULL;
+  char status = 'y';
+  HANDLE hthread = NULL;
+  STARTUPINFO si;
+  PROCESS_INFORMATION pi;
+  DWORD dwprocessId = 0;
+  DWORD dwthreadId = 0;
+  ZeroMemory(&si, sizeof(si));
+  ZeroMemory(&pi, sizeof(pi));
+  BOOL bCreateProcess = NULL;
+
+  bCreateProcess = CreateProcess(L"C:\\Windows\\notepad.exe", NULL, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi);
+  if (bCreateProcess == FALSE)
+  {
+    cout << "couldnotrocess\n"
+         << GetLastError() << endl;
+  }
+  cout << "program launched succesfully\n"
+       << endl;
+  cout << "processid" << pi.dwProcessId << endl;
+  cout << "threadid" << pi.dwThreadId << endl;
+
+  WaitForSingleObject(pi.hProcess, INFINITE);
+  CloseHandle(pi.hThread);
+  CloseHandle(pi.hProcess);*/
 
   int y;
   cin >> y;
