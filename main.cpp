@@ -147,9 +147,9 @@ int main()
   cout << "1.Shivam Sharma(captan)\n";
   cout << "2.Asher Ali\n";
   cout << "3.Asutosh Pradhan\n";
-  cout << "4.";
-  cout << "5.";
-  cout << "DSG (mentor)\n";
+  cout << "4.Shresth\n";
+  cout << "5.Dearme\n";
+  cout << "\n\nDSG (mentor)\n";
   cout << "\n\n\n\n\nLoading have patient and read the credits.";
 
   time_t actual = time(NULL);
