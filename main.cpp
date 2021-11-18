@@ -550,9 +550,9 @@ int main()
   cout << "2.Asher Ali\n";
   cout << "3.Asutosh Pradhan\n";
   cout << "4.Shresth\n";
-  cout << "5.Rohit \n";
+  cout << "5.Rohit Raj \n";
   cout << "\n\nDr. Daya Sagar Gupta(mentor)\n";
-  cout << "\n\n\n\n\nLoading have patient and read the credits.";
+  cout << "\n\n\n\n\nLoading have patient and read the credits...";
 
   time_t actual = time(NULL);
   time_t duration = 5;
